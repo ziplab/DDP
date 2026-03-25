@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Project outputs
+mcp_output/
+processed_images/
+cot_trace.txt
+
+# Data files (large binary / images)
+asset/direct_attributes/
+asset/relative_position/
+asset/Data/task2/TeT benchmark/*.parquet
+
+# Environment / secrets
+.env
