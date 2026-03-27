@@ -1,6 +1,25 @@
-# DDP - Visual Analysis with LLM Tool Use
+<p align="center">
+  <h1 align="center">Less Detail, Better Answers: Degradation-Driven Prompting for VQA</h1>
+  <p align="center">
+  <a href="https://github.com/hhx-jpg">Haoxuan Han</a>
+    ·
+    <a href="https://lhmd.top">Weijie Wang</a>
+    ·
+    <a href="https://steve-zeyu-zhang.github.io">Zeyu Zhang</a>
+    ·
+    <a href="https://hexy.tech/">Yefei He</a>
+    ·
+    <a href="https://bohanzhuang.github.io/">Bohan Zhuang</a>
+  </p>
+  <h3 align="center"><a href="#">Paper</a> | <a href="#">Project Page</a> | <a href="#">Code</a>  </h3>
+  <div align="center"></div>
+</p>
 
-A framework that solves visual perception tasks through an LLM API + image processing toolchain, covering various tasks such as optical illusion analysis, color comparison, size measurement, line geometry judgment, counting, spot-the-difference, and color bindness test recognition.
+Recent advancements in Vision-Language Models (VLMs) have significantly pushed the boundaries of Visual Question Answering (VQA). However, high-resolution details can sometimes become noise that leads to hallucinations or reasoning errors. We propose Degradation-Driven Prompting (DDP), a novel framework that improves VQA performance by strategically reducing image fidelity and utilizing an agentic tool-use pipeline to force models to focus on essential structural information.
+
+## Method
+
+<strong>Overview of Degradation-Driven Prompting (DDP)</strong>. Given an image and a question as input, our DDP framework introduces a "divide-and-conquer" workflow consisting of three stages: 1) The <strong>Classifier</strong> categorizes the image type and visual task. 2) The <strong>Tool-manager</strong> invokes specialized visual tools (e.g., draw rectangle, crop, blur masks, grid auxlines) to highlight suspicious regions and intentionally degrade distracting textures. 3) The <strong>Critic</strong> synthesizes these visual cues, corrects initial misconceptions bridging the perception-logic gap, and provides the final reasoned answer. This active agentic perception approach allows VLMs to bypass deceiving high-frequency textures and achieve superior reasoning accuracy on challenging visual benchmarks.
 
 ## Project Structure
 
@@ -91,23 +110,24 @@ python task2.py   # Run Task 2
 
 ### Workflow
 
-Both Tasks share the same three-stage architecture:
+Both Tasks share the same three-stage **DDP** architecture:
 
-```
+```text
 Input Image + Question
       │
       ▼
 ┌─────────────┐
-│ 1. Classify │  LLM determines which category the question belongs to
+│1. Classifier│  Categorizes the image type and visual task (e.g., real picture, optical illusion).
 └──────┬──────┘
        ▼
 ┌─────────────┐
-│ 2. Tool Use │  LLM selects image processing tools based on the category and provides parameters
-│             │  → Code executes the tool function and generates the processed image
+│2. Tool-     │  Invokes specialized visual tools based on the category (e.g., draw rectangle, crop)
+│   manager   │  → Code executes the tool function to degenerate textures and highlight explicit geometry.
 └──────┬──────┘
        ▼
 ┌─────────────┐
-│ 3. Reason   │  LLM provides the final answer based on the processed image + a dedicated prompt
+│3. Critic    │  Synthesizes visual cues, detects mismatches, corrects misconceptions, and provides the
+│             │  final reasoned answer bridging the perception-logic gap.
 └─────────────┘
 ```
 
