@@ -19,7 +19,13 @@ Recent advancements in Vision-Language Models (VLMs) have significantly pushed t
 
 ## Method
 
-<strong>Overview of Degradation-Driven Prompting (DDP)</strong>. Given an image and a question as input, our DDP framework introduces a "divide-and-conquer" workflow consisting of three stages: 1) The <strong>Classifier</strong> categorizes the image type and visual task. 2) The <strong>Tool-manager</strong> invokes specialized visual tools (e.g., draw rectangle, crop, blur masks, grid auxlines) to highlight suspicious regions and intentionally degrade distracting textures. 3) The <strong>Critic</strong> synthesizes these visual cues, corrects initial misconceptions bridging the perception-logic gap, and provides the final reasoned answer. This active agentic perception approach allows VLMs to bypass deceiving high-frequency textures and achieve superior reasoning accuracy on challenging visual benchmarks.
+<strong>Overview of Degradation-Driven Prompting (DDP)</strong>. Given an image and a question as input, our DDP framework introduces a "divide-and-conquer" workflow consisting of three stages:
+
+ 1) The <strong>Classifier</strong> categorizes the image type and visual task. 
+
+2) The <strong>Tool-manager</strong> invokes specialized visual tools (e.g., draw rectangle, crop, blur masks, grid auxlines) to highlight suspicious regions and intentionally degrade distracting textures. 
+
+3) The <strong>Critic</strong> synthesizes these visual cues, corrects initial misconceptions bridging the perception-logic gap, and provides the final reasoned answer. This active agentic perception approach allows VLMs to bypass deceiving high-frequency textures and achieve superior reasoning accuracy on challenging visual benchmarks.
 
 ## Project Structure
 
@@ -29,15 +35,15 @@ DDP/
 │   ├── Data/               # Task datasets
 │   │   ├── task1/
 │   │   └── task2/
-│   ├── direct_attributes/  # Attribute images
-│   ├── relative_position/  # Relative position images
-│   └── test.csv
+│   ├── TeT benchmark/  
+│   ├── V_star bench/ 
+│   
 ├── src/                    # Source code
 │   ├── task1.py            # Task 1 solver (Optical illusions / Visual perception)
 │   ├── task2.py            # Task 2 solver (Counting, Color blindness, Geometry, Real scenes, etc.)
 │   ├── helper.py           # Base solver definitions
 │   ├── mcp_server.py       # MCP Server (Optional, use with an MCP Client)
-│   └── task1_temp.py       # Experimental code
+│  
 ├── .gitignore
 ├── requirements.txt
 └── README.md
@@ -48,7 +54,45 @@ DDP/
 ```bash
 pip install -r requirements.txt
 ```
+This is a professional and structured addition for your `README.md`. I have organized it to clearly distinguish between the two tasks while highlighting the strict "No Training" and "Institutional Email" requirements.
 
+---
+
+##  CVPR 2026 DataCV Challenge
+
+This project is part of the **5th DataCV Challenge**, held in conjunction with the **CVPR 2026 DataCV Workshop**. The challenge focuses on the data-centric evaluation of Vision-Language Models (VLMs) under visual illusions and perceptual anomalies.
+
+###  Challenge Overview
+The core objective is to improve VLM robustness **without any model training or fine-tuning**. Participants must rely on prompting, in-context learning (ICL), and inference-time strategies using frozen, off-the-shelf models.
+
+---
+
+###  Task I: Classic Illusion Understanding
+**Goal:** Design a strategy to enable a fixed VLM to answer binary (**Yes/No**) questions about classic optical illusions.
+
+* **Input:** Illusion image + Binary question.
+* **Core Constraint:**  **Perception-focused.** Submissions **must not** use measurement- or computation-based pipelines (e.g., explicit length/angle estimation, ruler-based quantification, or pixel-level statistics).
+* **Allowed:** Basic adjustments like resizing or standard normalization that do not produce quantitative measurements.
+
+---
+
+### Task II: Real-world Visual Illusions and Anomalies
+**Goal:** Design a strategy for a VLM to answer **multiple-choice questions** (A, B, C, D) based on real-world visual anomalies.
+
+* **Input:** Image + Multiple-choice prompt.
+* **Strategy:** Any form of prompting or inference-time strategy is allowed, provided the model remains frozen.
+
+---
+
+###  Common Constraints & Rules
+To ensure a valid entry, all participants must adhere to the following:
+
+1.  **No Training/Fine-tuning:** Strictly no gradient updates or weight changes are permitted ($0$ parameters updated).
+2.  **Model Selection:** Only off-the-shelf, publicly released models (e.g., GPT-4, Claude, Qwen, LLaVA) are allowed.
+3.  **Inference Only:** Only zero-shot or few-shot inference-time methods (Prompting, ICL) are permitted.
+
+
+---
 ## Quick Start: Run Task Code Directly
 
 `task1.py` and `task2.py` are **complete scripts that can run independently** without the MCP Server. They invoke the LLM API via an **OpenAI-compatible interface** to implement a three-stage pipeline: "Classification → Tool Usage → Final Reasoning".
