@@ -33,8 +33,8 @@ Recent advancements in Vision-Language Models (VLMs) have significantly pushed t
 DDP/
 ├── asset/                  # Test data and images
 │   ├── Data/               # Task datasets
-│   │   ├── task1/
-│   │   └── task2/
+│   │   ├── task1/ #Only csv of questions
+│   │   └── task2/ #Only json of questions,you can download the image set from official website of the workshop
 │   ├── TeT benchmark/  
 │   ├── V_star bench/ 
 │   
@@ -67,7 +67,7 @@ The core objective is to improve VLM robustness **without any model training or 
 
 ---
 
-###  Task I: Classic Illusion Understanding
+###  [Task I](https://www.codabench.org/competitions/13564/): Classic Illusion Understanding
 **Goal:** Design a strategy to enable a fixed VLM to answer binary (**Yes/No**) questions about classic optical illusions.
 
 * **Input:** Illusion image + Binary question.
@@ -76,7 +76,7 @@ The core objective is to improve VLM robustness **without any model training or 
 
 ---
 
-### Task II: Real-world Visual Illusions and Anomalies
+### [Task II](https://www.codabench.org/competitions/13567/): Real-world Visual Illusions and Anomalies
 **Goal:** Design a strategy for a VLM to answer **multiple-choice questions** (A, B, C, D) based on real-world visual anomalies.
 
 * **Input:** Image + Multiple-choice prompt.
