@@ -1,9 +1,9 @@
 <p align="center">
   <h1 align="center">Less Detail, Better Answers: Degradation-Driven Prompting for VQA</h1>
   <p align="center">
-  <a href="https://github.com/hhx-jpg">Haoxuan Han</a>
+  <a href="https://github.com/hhx-jpg">Haoxuan Han</a><sup>*</sup>
     ·
-    <a href="https://lhmd.top">Weijie Wang</a>
+    <a href="https://lhmd.top">Weijie Wang</a><sup>*†</sup>
     ·
     <a href="https://steve-zeyu-zhang.github.io">Zeyu Zhang</a>
     ·
@@ -11,7 +11,10 @@
     ·
     <a href="https://bohanzhuang.github.io/">Bohan Zhuang</a>
   </p>
-  <h3 align="center"><a href="#">Paper</a> | <a href="#">Project Page</a> | <a href="#">Code</a>  </h3>
+  <p align="center">
+    <sup>*</sup>Equal Contribution&nbsp;&nbsp;<sup>†</sup>Project Lead
+  </p>
+  <h3 align="center"><a href="#">Paper</a> | <a href="#">Project Page</a> | <a href="https://github.com/ziplab/DDP">Code</a></h3>
   <div align="center"></div>
 </p>
 
@@ -260,3 +263,11 @@ Add to `.mcp.json` in the project root directory:
 ### Important Note
 
 The MCP Server only provides the **image processing tools** themselves. To achieve the exact same results as the complete pipeline in task1/task2, you need to use these tools in your MCP Client alongside the classification prompts and tool invocation prompts defined in the code. These prompts are defined in the `solve()` methods of `task1.py` / `task2.py` (e.g., `classifyprompt`, `toolusage_1`, `class1prompt`, etc.).
+
+## Citation
+
+If you find our work useful for your research, please consider citing us:
+
+```bibtex
+
+```
