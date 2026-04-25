@@ -269,5 +269,10 @@ The MCP Server only provides the **image processing tools** themselves. To achie
 If you find our work useful for your research, please consider citing us:
 
 ```bibtex
-
+@article{han2026ddp,
+      title={Less Detail, Better Answers: Degradation-Driven Prompting for VQA}, 
+      author={Haoxuan Han and Weijie Wang and Zeyu Zhang and Yefei He and Bohan Zhuang},
+      journal={arXiv preprint arXiv:2604.04838},
+      year={2026}
+}
 ```
